@@ -7,20 +7,21 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 /**
- * Hello world!
+ * Demo app showcasing Java logging framework.
  */
 public class App {
 
-    @SuppressWarnings("FieldCanBeLocal")
-    private Logger logger;
+    private final Logger logger;
 
     public App() {
         configureLogging();
+
+        String name = getClass().getName();
+        logger = Logger.getLogger(name);
+
     }
 
     private void demoLogger() {
-        String name = getClass().getName();
-        logger = Logger.getLogger(name);
 
         logger.severe("severe");
         logger.warning("warning");
