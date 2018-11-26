@@ -11,14 +11,14 @@ import java.util.logging.Logger;
  */
 public class App {
 
-    public static final String JAVA_UTIL_LOGGING_CONFIG_FILE_PROPERTY = "java.util.logging.config.file";
+    @SuppressWarnings("FieldCanBeLocal")
     private Logger logger;
 
     public App() {
         configureLogging();
     }
 
-    public void demoLogger() {
+    private void demoLogger() {
         String name = getClass().getName();
         logger = Logger.getLogger(name);
 
