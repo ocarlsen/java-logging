@@ -2,6 +2,7 @@ package com.ocarlsen.app;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -14,11 +15,10 @@ public class App {
     private Logger logger;
 
     public App() {
-
+        configureLogging();
     }
 
-    public void run() {
-        configureLogging();
+    public void demoLogger() {
         String name = getClass().getName();
         logger = Logger.getLogger(name);
 
@@ -29,10 +29,16 @@ public class App {
         logger.fine("fine");
         logger.finer("finer");
         logger.finest("finest");
+
+        // Log an exception.
+        RuntimeException ex = new RuntimeException("Oops!");
+        logger.log(Level.WARNING, ex.getMessage(), ex);
     }
 
     private void configureLogging() {
         try {
+            // Not automatically loaded.
+            // Need to get it from the JAR file built by Maven.
             InputStream inputStream = getClass().getResourceAsStream("/logging.properties");
             LogManager.getLogManager().readConfiguration(inputStream);
         } catch (final IOException e) {
@@ -42,7 +48,6 @@ public class App {
     }
 
     public static void main(String[] args) {
-        App app = new App();
-        app.run();
+        new App().demoLogger();
     }
 }
