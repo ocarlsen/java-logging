@@ -33,6 +33,7 @@ public class App {
     }
 
     public static void main(String[] args) throws IOException {
+        // Could also set 'java.util.logging.config.file' system property on command line.
         LogUtil.configureFrom("logging.properties");
         new App().demoLogger();
     }
