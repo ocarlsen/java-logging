@@ -13,7 +13,7 @@ public class App {
 
     private final Logger logger;
 
-    public App() throws IOException {
+    public App() {
         logger = Logger.getLogger(LogUtil.class.getName());
     }
 
